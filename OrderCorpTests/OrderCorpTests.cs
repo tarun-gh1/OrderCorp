@@ -15,11 +15,12 @@ namespace OrderCorpTests
         {
             // Arrange
             var order = new OrderCorpLib();
-            
-            // Act
 
+            // Act
+            bool orderCreated = order.CreateOrder();
+            
             // Assert
-            Assert.();
+            Assert.AreEqual(true, orderCreated);
         }
     }
 }

@@ -9,5 +9,13 @@ namespace OrderCorpLibrary
                 
         }
 
+        public bool CreateOrder()
+        {
+            bool orderCreated = true;
+
+
+            return orderCreated;
+        }
+
     }
 }
