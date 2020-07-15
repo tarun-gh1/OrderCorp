@@ -9,9 +9,8 @@ namespace OrderCorpTests
         IProduct product = new Product()
         {
             ProductType = 1,
-            ProductName = "Learning to Ski",
+            ProductName = "PhysicalProduct",
             Purpose = "Upgrade"
-
         };
 
         [Test]
@@ -42,6 +41,23 @@ namespace OrderCorpTests
 
         [Test]
         public void TestPackingMembershipNotifyDependencies()
+        {
+            // Arrange
+            IPacking packing = new PackingSlip();
+            INotify notify = new Notify();
+            IMembership membership = new Membership();
+
+            var order = new OrderCorpLib(packing, notify, membership);
+
+            // Act
+            bool orderCreated = order.CreateOrder(product);
+
+            // Assert
+            Assert.AreEqual(true, orderCreated);
+        }
+
+        [Test]
+        public void TestCreateOrderWithPhysicalProduct()
         {
             // Arrange
             IPacking packing = new PackingSlip();

@@ -35,7 +35,16 @@ namespace OrderCorpLibrary
         public bool CreateOrder(IProduct product)
         {
             bool orderCreated = true;
-
+            switch (product.ProductType)
+            {
+                case 1:
+                    packing.GenerateSlip();
+                    orderCreated = true;
+                    break;
+                
+                default:
+                    break;
+            }
 
             return orderCreated;
         }
