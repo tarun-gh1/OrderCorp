@@ -6,8 +6,8 @@ namespace OrderCorpLibrary
     public class OrderCorpLib
     {
         private readonly IPacking packing;
-        private INotify notify;
-        private IMembership membership;
+        private readonly INotify notify;
+        private readonly IMembership membership;
 
         public OrderCorpLib()
         {
@@ -34,14 +34,40 @@ namespace OrderCorpLibrary
         }
         public bool CreateOrder(IProduct product)
         {
-            bool orderCreated = true;
+            bool orderCreated = false;
+
             switch (product.ProductType)
             {
-                case 1:
+                case (int)ProductTypes.ProdType.Physical:
                     packing.GenerateSlip();
                     orderCreated = true;
                     break;
-                
+                case (int)ProductTypes.ProdType.Book:
+                    packing.GenerateDuplicateSlip((int)Department.Royalty);
+                    orderCreated = true;
+                    break;
+                case (int)ProductTypes.ProdType.Membership:
+                    if (product.Purpose == "Activate")
+                    {
+                        membership.Activate();
+                        notify.NotifyUser(product.Purpose);
+                    }
+                    else if (product.Purpose == "Upgrade")
+                    {
+                        membership.Upgrade();
+                        notify.NotifyUser(product.Purpose);
+                    }
+                    orderCreated = true;
+                    break;
+                case (int)ProductTypes.ProdType.Video:
+                    if (String.Equals(product.ProductName, "Learning to Ski"))
+                    {
+                        packing.GenerateSlip();
+                        packing.AddFreeVideo();
+                    }
+                    orderCreated = true;
+                    break;
+
                 default:
                     break;
             }

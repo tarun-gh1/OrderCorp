@@ -8,7 +8,7 @@ namespace OrderCorpTests
     {
         IProduct product = new Product()
         {
-            ProductType = 1,
+            ProductType = (int)ProductTypes.ProdType.Physical,
             ProductName = "PhysicalProduct",
             Purpose = "Upgrade"
         };
@@ -25,7 +25,7 @@ namespace OrderCorpTests
             // Assert
             Assert.AreEqual(true, orderCreated);
         }
-
+        /*
         [Test]
         public void TestOrderCreatePassProduct()
         {
@@ -38,7 +38,7 @@ namespace OrderCorpTests
             // Assert
             Assert.AreEqual(true, orderCreated);
         }
-
+        */
         [Test]
         public void TestPackingMembershipNotifyDependencies()
         {

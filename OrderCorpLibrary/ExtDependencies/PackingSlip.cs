@@ -13,7 +13,8 @@ namespace OrderCorpLibrary.ExtDependencies
 
         public void GenerateDuplicateSlip(int Dept)
         {
-            Console.WriteLine("");
+            string deptName = Enum.GetName(typeof(Department), Dept);
+            Console.WriteLine($"Dulicate packing slip generated. Department: {deptName}");
         }
 
         public void GenerateSlip()
