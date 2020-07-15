@@ -45,7 +45,10 @@ namespace OrderCorpTests
         {
             // Arrange
             IPacking packing = new PackingSlip();
-            var order = new OrderCorpLib(packing);
+            INotify notify = new Notify();
+            IMembership membership = new Membership();
+
+            var order = new OrderCorpLib(packing, notify, membership);
 
             // Act
             bool orderCreated = order.CreateOrder(product);

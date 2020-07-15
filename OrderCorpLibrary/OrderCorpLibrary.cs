@@ -6,6 +6,8 @@ namespace OrderCorpLibrary
     public class OrderCorpLib
     {
         private readonly IPacking packing;
+        private INotify notify;
+        private IMembership membership;
 
         public OrderCorpLib()
         {
@@ -15,6 +17,14 @@ namespace OrderCorpLibrary
         {
             this.packing = packing;
         }
+
+        public OrderCorpLib(IPacking packing, INotify notify, IMembership membership)
+        {
+            this.packing = packing;
+            this.notify = notify;
+            this.membership = membership;
+        }
+
         public bool CreateOrder()
         {
             bool orderCreated = true;
