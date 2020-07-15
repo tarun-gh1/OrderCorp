@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using OrderCorpLibrary;
+using OrderCorpLibrary.ExtDependencies;
 
 namespace OrderCorpTests
 {
@@ -32,6 +33,20 @@ namespace OrderCorpTests
             // Arrange
             var order = new OrderCorpLib();
             
+            // Act
+            bool orderCreated = order.CreateOrder(product);
+
+            // Assert
+            Assert.AreEqual(true, orderCreated);
+        }
+
+        [Test]
+        public void TestPackingMembershipNotifyDependencies()
+        {
+            // Arrange
+            IPacking packing = new PackingSlip();
+            var order = new OrderCorpLib(packing);
+
             // Act
             bool orderCreated = order.CreateOrder(product);
 

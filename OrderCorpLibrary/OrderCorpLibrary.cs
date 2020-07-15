@@ -1,12 +1,19 @@
-﻿using System;
+﻿using OrderCorpLibrary.ExtDependencies;
+using System;
 
 namespace OrderCorpLibrary
 {
     public class OrderCorpLib
     {
+        private readonly IPacking packing;
+
         public OrderCorpLib()
         {
                 
+        }
+        public OrderCorpLib(IPacking packing)
+        {
+            this.packing = packing;
         }
         public bool CreateOrder()
         {
