@@ -8,8 +8,14 @@ namespace OrderCorpLibrary
         {
                 
         }
-
         public bool CreateOrder()
+        {
+            bool orderCreated = true;
+
+
+            return orderCreated;
+        }
+        public bool CreateOrder(IProduct product)
         {
             bool orderCreated = true;
 

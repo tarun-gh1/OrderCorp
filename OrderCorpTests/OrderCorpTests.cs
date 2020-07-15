@@ -5,13 +5,16 @@ namespace OrderCorpTests
 {
     public class Tests
     {
-        [SetUp]
-        public void Setup()
+        IProduct product = new Product()
         {
-        }
+            ProductType = 1,
+            ProductName = "Learning to Ski",
+            Purpose = "Upgrade"
+
+        };
 
         [Test]
-        public void Test1()
+        public void TestOrderCreateInitial()
         {
             // Arrange
             var order = new OrderCorpLib();
@@ -19,6 +22,19 @@ namespace OrderCorpTests
             // Act
             bool orderCreated = order.CreateOrder();
             
+            // Assert
+            Assert.AreEqual(true, orderCreated);
+        }
+
+        [Test]
+        public void TestOrderCreatePassProduct()
+        {
+            // Arrange
+            var order = new OrderCorpLib();
+            
+            // Act
+            bool orderCreated = order.CreateOrder(product);
+
             // Assert
             Assert.AreEqual(true, orderCreated);
         }
